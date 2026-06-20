@@ -1,0 +1,60 @@
+.navbar {
+    width: 100%;
+    background-color: #9a0202;
+    overflow: auto;
+}
+
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #eba205;
+}
+
+button {
+    background-color: #06c57f;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+}
+
+input[type=submit] {
+    background-color: #038689;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+}
+
+body {
+    font-family: Galada, Trebuchet MS, sans serif;
+    background-color: whitesmoke;
+}
+
+h1 {
+    font-size : 250%;
+    color: coral;
+}
+
+h2 {
+    font-size : 175%;
+    color: black;
+}
