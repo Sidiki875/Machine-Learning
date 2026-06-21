@@ -9,7 +9,7 @@ from django.shortcuts import render
 from .forms import EntityForm
 from .forms import ParticipantForm
 from .models import Participant
-# from .ml import logreg_cv
+from .ml import logreg_cv
 
 # Create your views here.
 def index(request):
@@ -67,10 +67,10 @@ def predict(request):
             return render(request, 'healthapp/predict.html', context)
 
         
-        # prediction = logreg_cv.predict(input_data)[0]
+        prediction = logreg_cv.predict(input_data)[0]
 
-        # return render(request, 'results.html',
-        #               {'prediction': prediction})
+        return render(request, 'predict.html',
+                      {'prediction': prediction})
     
     else:
         form = ParticipantForm()

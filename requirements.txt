@@ -16,3 +16,4 @@ dash-bootstrap-components == 2.0.4
 dash-mantine-components == 2.3.0
 graphviz == 0.21
 ucimlrepo == 0.0.7
+joblib == 1.5.3
