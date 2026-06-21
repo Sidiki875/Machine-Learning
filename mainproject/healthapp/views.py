@@ -9,6 +9,7 @@ from django.shortcuts import render
 from .forms import EntityForm
 from .forms import ParticipantForm
 from .models import Participant
+from .forms import ContactForm
 from .mllog import logreg_cv
 
 # Create your views here.
@@ -35,19 +36,33 @@ def index(request):
 
     return render(request, 'healthapp/base.html', context)
 
+def contact_view(request):
+    result= None
+
+    if request.method == "POST":
+        contacts = ContactForm(request.POST)
+        if contacts.is_valid():
+            name = contacts.cleaned_data["name"]
+            message = contacts.cleaned_data["message"]
+
+            result = f"Thanks {name}, we received: {message}"
+    else:
+        contacts = ContactForm()
+
+    return render(request, 'healthapp/contact.html', {'contacts': contacts, 'result': result})
+
 def predict(request):
 
     if request.method == 'POST':
 
         form = ParticipantForm(request.POST)
 
-        context['form'] = ParticipantForm(request.POST)
+        #context['form'] = ParticipantForm(request.POST)
 
         if form.is_valid():
 
             age = form.cleaned_data['age']
             bmi = form.cleaned_data['bmi']
-            glucose = form.cleaned_data['glucose']
             sex = form.cleaned_data['sex']
             blood_pressure = form.cleaned_data['blood_pressure']
             physical_activity = form.cleaned_data['physical_activity']
@@ -69,7 +84,6 @@ def predict(request):
             participant = Participant.objects.create(
                 age = age,
                 bmi = bmi,
-                glucose = glucose,
                 blood_pressure = blood_pressure,
                 sex = sex,
                 physical_activity = physical_activity,
@@ -112,9 +126,9 @@ def predict(request):
 
         # return result
 
-            context['result'] = result
+            #context['result'] = result
 
-            return render(request, 'healthapp/predict.html', {'result':result})
+            return render(request, 'healthapp/predict.html', {'result':result,'form':ParticipantForm()})
     
     else:
         form = ParticipantForm()

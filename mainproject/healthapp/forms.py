@@ -6,6 +6,10 @@ from .models import Participant
 class EntityForm(forms.Form):
     entity = forms.CharField(max_length = 200, label='Entity/Country')
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length= 100)
+    message = forms.CharField(widget=forms.Textarea)
+
 class ParticipantForm(forms.Form):
     age = forms.IntegerField(
         min_value=0,
