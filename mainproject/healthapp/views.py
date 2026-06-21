@@ -9,7 +9,7 @@ from django.shortcuts import render
 from .forms import EntityForm
 from .forms import ParticipantForm
 from .models import Participant
-from .ml import logreg_cv
+from .mllog import logreg_cv
 
 # Create your views here.
 def index(request):
