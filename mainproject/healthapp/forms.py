@@ -19,9 +19,6 @@ class ParticipantForm(forms.Form):
         max_value=100,
         label='BMI'
     )
-    glucose = forms.FloatField(
-        label='Fasting Glucose (mg/dl)'
-    )
     sex = forms.ChoiceField(
         choices=[('male','Male'), ('female', 'Female')]
     )
@@ -77,6 +74,14 @@ class ParticipantForm(forms.Form):
     Education = forms.ChoiceField(
         choices = [(1, 'Never attended school or only kindergarten'),(2, 'Grades 1 through 8 Elementary'),(3, 'Grades 9 through 11(Some high school)'),
                    (4, 'Grade 12 or GED (High School graduate)'),(5, 'College 1 year to 3 years (Some college or technical school)'),(6, 'College 4 years or more (College graduate)')]
+    )
+    HeartDiseaseorAttack = forms.ChoiceField(
+        choices = [(0, 'Yes'),(1, 'No')]
+    )
+    MentHlth = forms.IntegerField(
+        min_value = 0,
+        max_value = 30,
+        label = '	Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good?'
     )
 
 
