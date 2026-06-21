@@ -10,6 +10,7 @@ from .forms import EntityForm
 from .forms import ParticipantForm
 from .models import Participant
 from .forms import ContactForm
+from .mllog import features
 from .mllog import logreg_cv
 
 # Create your views here.
@@ -53,6 +54,8 @@ def contact_view(request):
 
 def predict(request):
 
+    result = None
+
     if request.method == 'POST':
 
         form = ParticipantForm(request.POST)
@@ -61,43 +64,46 @@ def predict(request):
 
         if form.is_valid():
 
-            age = form.cleaned_data['age']
-            bmi = form.cleaned_data['bmi']
-            sex = form.cleaned_data['sex']
-            blood_pressure = form.cleaned_data['blood_pressure']
-            physical_activity = form.cleaned_data['physical_activity']
-            gen_hlth = form.cleaned_data['gen_hlth']
-            any_hlthcare = form.cleaned_data['any_hlthcare']
-            Hvyalcohol = form.cleaned_data['Hvyalcohol']
+            Age = form.cleaned_data['age']
+            BMI = form.cleaned_data['bmi']
+            Sex = form.cleaned_data['sex']
+            HighBP = form.cleaned_data['blood_pressure']
+            PhysActivity = form.cleaned_data['physical_activity']
+            MentHlth = form.cleaned_data['MentHlth']
+            GenHlth = form.cleaned_data['gen_hlth']
+            AnyHealthcare = form.cleaned_data['any_hlthcare']
+            HvyAlcoholConsump = form.cleaned_data['Hvyalcohol']
             Veggies = form.cleaned_data['Veggies']
             Fruits = form.cleaned_data['Fruits']
-            Nodocbccost = form.cleaned_data['Nodocbccost']
+            NoDocbcCost = form.cleaned_data['Nodocbccost']
             PhysHlth = form.cleaned_data['PhysHlth']
-            Diffwalk = form.cleaned_data['Diffwalk']
-            smoker = form.cleaned_data['smoker']
-            stroke = form.cleaned_data['stroke']
-            income = form.cleaned_data['income']
+            DiffWalk = form.cleaned_data['Diffwalk']
+            Smoker = form.cleaned_data['smoker']
+            Stroke = form.cleaned_data['stroke']
+            Income = form.cleaned_data['income']
             CholCheck = form.cleaned_data['CholCheck']
             HighChol = form.cleaned_data['HighChol']
             Education = form.cleaned_data['Education']
+            HeartDiseaseorAttack = form.cleaned_data['HeartDiseaseorAttack']
+
 
             participant = Participant.objects.create(
-                age = age,
-                bmi = bmi,
-                blood_pressure = blood_pressure,
-                sex = sex,
-                physical_activity = physical_activity,
-                gen_hlth = gen_hlth,
-                any_hlthcare = any_hlthcare,
-                Hvyalcohol = Hvyalcohol,
+                age = Age,
+                bmi = BMI,
+                blood_pressure = HighBP,
+                sex = Sex,
+                physical_activity = PhysActivity,
+                gen_hlth = GenHlth,
+                any_hlthcare = AnyHlthcare,
+                Hvyalcohol = HvyAlcoholConsump,
                 Veggies = Veggies,
                 Fruits = Fruits,
-                Nodocbccost = Nodocbccost,
+                Nodocbccost = NoDocbcCost,
                 PhysHlth = PhysHlth,
-                Diffwalk = Diffwalk,
-                smoker = smoker,
-                stroke = stroke,
-                income = income,
+                Diffwalk = DiffWalk,
+                smoker = Smoker,
+                stroke = Stroke,
+                income = Income,
                 CholCheck = CholCheck,
                 HighChol = HighChol,
                 Education = Education,
@@ -105,12 +111,7 @@ def predict(request):
 
             )
 
-            input_data = [[age, bmi, blood_pressure,
-                            sex, physical_activity, gen_hlth,
-                              any_hlthcare, Hvyalcohol, Veggies,
-                                Fruits, Nodocbccost, PhysHlth,
-                                  Diffwalk, smoker, stroke,
-                                    income, CholCheck, HighChol, Education]]
+            input_data = [[features]]
 
             # return render(request, 'healthapp/predict.html', context)
 
@@ -128,7 +129,7 @@ def predict(request):
 
             #context['result'] = result
 
-            return render(request, 'healthapp/predict.html', {'result':result,'form':ParticipantForm()})
+            return render(request, 'healthapp/predict.html', {'form':ParticipantForm(), 'result':result})
     
     else:
         form = ParticipantForm()
