@@ -41,7 +41,7 @@ def predict(request):
 
         form = ParticipantForm(request.POST)
 
-        context['form'] = ParticipantForm()
+        context['form'] = ParticipantForm(request.POST)
 
         if form.is_valid():
 
@@ -98,22 +98,23 @@ def predict(request):
                                   Diffwalk, smoker, stroke,
                                     income, CholCheck, HighChol, Education]]
 
-            return render(request, 'healthapp/predict.html', context)
+            # return render(request, 'healthapp/predict.html', context)
 
         
-        prediction = logreg_cv.predict(input_data)[0]
+            prediction = logreg_cv.predict(input_data)[0]
 
-        if prediction == 0:
-            result = 'No diabetes'
-        elif prediction == 1:
-            result = 'Diabetes'
-        else :
-            result = 'Oops'
+            if prediction == 0:
+                result = 'No diabetes'
+            elif prediction == 1:
+                result = 'Diabetes'
+            else :
+                result = 'Oops'
 
         # return result
 
-        return render(request, 'healthapp/predict.html',
-                      {'result': result})
+            context['result'] = result
+
+            return render(request, 'healthapp/predict.html', {'result':result})
     
     else:
         form = ParticipantForm()
