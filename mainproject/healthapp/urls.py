@@ -10,7 +10,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.index, name='index'),
     path('healthapp/', views.index, name='index'),
-    path('healthapp/predict', views.predict, name='predict'),
-    path('healthapp/contact', views.contact_view, name='contact'),
+    path('healthapp/predict/', views.predict, name='predict'),
+    path('healthapp/contact/', views.contact_view, name='contact'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
