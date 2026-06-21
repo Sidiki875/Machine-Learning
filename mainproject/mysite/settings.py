@@ -119,4 +119,6 @@ STATIC_URL = "static/"
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.app.github.dev',
+    'http://localhost:8000',
+    'https://localhost:8000',
 ]
