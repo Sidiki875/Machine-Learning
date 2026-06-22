@@ -54,4 +54,12 @@ class Participant(models.Model):
         return f'Participant {self.id}'
 
     
-
+class Participant2(models.Model):
+    Pregnancies = models.IntegerField(default=0)
+    Glucose = models.FloatField(default=0)
+    BloodPressure = models.FloatField(default=0)
+    SkinThickness = models.FloatField(default=0)
+    Insulin = models.FloatField(default=0)
+    BMI = models.FloatField(default=0.0)
+    DiabetesPedigreeFunction = models.FloatField(default=0.0)
+    Age = models.IntegerField(default=0)

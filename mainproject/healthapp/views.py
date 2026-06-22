@@ -8,11 +8,17 @@ from django.shortcuts import render
 
 from .forms import EntityForm
 from .forms import ParticipantForm
-from .models import Participant
+from .forms import Participant2Form
 from .forms import ContactForm
+
+from .models import Participant
+from .models import Participant2
+
 from .mllog import logreg_cv
+from .ml2log import logistreg_cv
 
 # Create your views here.
+
 def index(request):
 
     if request.method == 'GET':
@@ -152,4 +158,60 @@ def predict(request):
     return render(request, 'healthapp/predict.html', {'form': form})
 
 
+def predict2(request):
 
+    result = None
+
+    if request.method == 'POST':
+
+        form2 = Participant2Form(request.POST)
+
+        if form2.is_valid():
+
+            Pregnancies = form2.cleaned_data['Pregnancies']
+            Glucose = form2.cleaned_data['Glucose']
+            BloodPressure = form2.cleaned_data['BloodPressure']
+            SkinThickness = form2.cleaned_data['SkinThickness']
+            Insulin = form2.cleaned_data['Insulin']
+            BMI = form2.cleaned_data['BMI']
+            DiabetesPedigreeFunction = form2.cleaned_data['DiabetesPedigreeFunction']
+            Age = form2.cleaned_data['Age']
+
+            participant2 = Participant2.objects.create(
+                Pregnancies = Pregnancies,
+                Glucose = Glucose,
+                BloodPressure = BloodPressure,
+                SkinThickness = SkinThickness,
+                Insulin = Insulin,
+                BMI = BMI,
+                DiabetesPedigreeFunction = DiabetesPedigreeFunction,
+                Age = Age,
+            )
+
+            input_data = [Pregnancies, Glucose, BloodPressure, 
+                          SkinThickness, Insulin, BMI,
+                           DiabetesPedigreeFunction, Age]
+            
+            input_data = np.array(input_data).reshape(1, -1)
+
+            prediction2 = logistreg_cv.predict(input_data)[0]
+
+            prediction2_proba = logistreg_cv.predict_proba(input_data)[0]
+
+            if prediction2 == 0:
+                result = 'No diabetes'
+                result_proba = f'{prediction2_proba[0]:.2f}'
+            elif prediction2 == 1:
+                result = 'Diabetes'
+                result_proba = f'{prediction2_proba[1]:.2f}'
+            else:
+                result = 'Oops'
+                result_proba = 'Not Available'
+
+
+            return render(request, 'healthapp/predict2.html', {'form2':form2, 'result':result, 'result_proba':result_proba})
+        
+    else:
+        form2 = Participant2Form()
+
+    return render(request, 'healthapp/predict2.html', {'form2': form2})
