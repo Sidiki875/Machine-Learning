@@ -126,19 +126,25 @@ def predict(request):
 
         
             prediction = logreg_cv.predict(input_data)[0]
+            prediction_proba = logreg_cv.predict_proba(input_data)[0]
+            
 
             if prediction == 0:
                 result = 'No diabetes'
+                result_proba = f'{prediction_proba[0]:.2f}'
             elif prediction == 1:
                 result = 'Diabetes'
+                result_proba = f'{prediction_proba[1]:.2f}'
             else :
                 result = 'Oops'
+                result_proba = None
+                
 
         # return result
 
             #context['result'] = result
 
-            return render(request, 'healthapp/predict.html', {'form':ParticipantForm(), 'result':result})
+            return render(request, 'healthapp/predict.html', {'form':form, 'result':result, 'result_proba':result_proba})
     
     else:
         form = ParticipantForm()

@@ -40,11 +40,21 @@
 
      <br>
 
-     <h2> Prediction Results : </h2>
+     <h1> Prediction Results : </h1>
+
+     <h3> Diagnostic </h3>
 
         {% if result %}
         <div class="result">
             {{ result }}
+        </div>
+        {% endif %}
+
+     <h3> Probability </h3>
+
+        {% if result_proba %}
+        <div class="result_proba">
+            {{ result_proba }}
         </div>
         {% endif %}
      
