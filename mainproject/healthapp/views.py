@@ -10,7 +10,6 @@ from .forms import EntityForm
 from .forms import ParticipantForm
 from .models import Participant
 from .forms import ContactForm
-from .mllog import features
 from .mllog import logreg_cv
 
 # Create your views here.
