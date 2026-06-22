@@ -1,5 +1,5 @@
 from multiprocessing import context
-
+import numpy as np
 import plotly.express as px
 from plotly.offline import plot
 import plotly.graph_objects as go
@@ -64,23 +64,23 @@ def predict(request):
 
         if form.is_valid():
 
-            Age = form.cleaned_data['age']
-            BMI = form.cleaned_data['bmi']
-            Sex = form.cleaned_data['sex']
-            HighBP = form.cleaned_data['blood_pressure']
-            PhysActivity = form.cleaned_data['physical_activity']
+            Age = form.cleaned_data['Age']
+            BMI = form.cleaned_data['BMI']
+            Sex = form.cleaned_data['Sex']
+            HighBP = form.cleaned_data['HighBP']
+            PhysActivity = form.cleaned_data['PhysActivity']
             MentHlth = form.cleaned_data['MentHlth']
-            GenHlth = form.cleaned_data['gen_hlth']
-            AnyHealthcare = form.cleaned_data['any_hlthcare']
-            HvyAlcoholConsump = form.cleaned_data['Hvyalcohol']
+            GenHlth = form.cleaned_data['GenHlth']
+            AnyHealthcare = form.cleaned_data['AnyHealthcare']
+            HvyAlcoholConsump = form.cleaned_data['HvyAlcoholConsump']
             Veggies = form.cleaned_data['Veggies']
             Fruits = form.cleaned_data['Fruits']
-            NoDocbcCost = form.cleaned_data['Nodocbccost']
+            NoDocbcCost = form.cleaned_data['NoDocbcCost']
             PhysHlth = form.cleaned_data['PhysHlth']
-            DiffWalk = form.cleaned_data['Diffwalk']
-            Smoker = form.cleaned_data['smoker']
-            Stroke = form.cleaned_data['stroke']
-            Income = form.cleaned_data['income']
+            DiffWalk = form.cleaned_data['DiffWalk']
+            Smoker = form.cleaned_data['Smoker']
+            Stroke = form.cleaned_data['Stroke']
+            Income = form.cleaned_data['Income']
             CholCheck = form.cleaned_data['CholCheck']
             HighChol = form.cleaned_data['HighChol']
             Education = form.cleaned_data['Education']
@@ -88,30 +88,40 @@ def predict(request):
 
 
             participant = Participant.objects.create(
-                age = Age,
-                bmi = BMI,
-                blood_pressure = HighBP,
-                sex = Sex,
-                physical_activity = PhysActivity,
-                gen_hlth = GenHlth,
-                any_hlthcare = AnyHealthcare,
+                Age = Age,
+                BMI = BMI,
+                HighBP = HighBP,
+                Sex = Sex,
+                PhysActivity = PhysActivity,
+                GenHlth = GenHlth,
+                AnyHealthcare = AnyHealthcare,
                 HvyAlcoholConsump = HvyAlcoholConsump,
                 Veggies = Veggies,
                 Fruits = Fruits,
-                Nodocbccost = NoDocbcCost,
+                NoDocbcCost = NoDocbcCost,
                 PhysHlth = PhysHlth,
-                Diffwalk = DiffWalk,
-                smoker = Smoker,
-                stroke = Stroke,
-                income = Income,
+                DiffWalk = DiffWalk,
+                Smoker = Smoker,
+                Stroke = Stroke,
+                Income = Income,
                 CholCheck = CholCheck,
                 HighChol = HighChol,
                 Education = Education,
+                HeartDiseaseorAttack = HeartDiseaseorAttack,
+                MentHlth = MentHlth,
 
 
             )
 
-            input_data = [[features]]
+            input_data = [HighBP, HighChol, CholCheck, BMI,
+                            Smoker, Stroke, HeartDiseaseorAttack, PhysActivity,
+                            Fruits, Veggies, HvyAlcoholConsump,
+                            AnyHealthcare, NoDocbcCost, GenHlth,
+                            MentHlth, PhysHlth, DiffWalk,
+                            Sex, Age, Education, Income
+                        ]
+            
+            input_data = np.array(input_data).reshape(1, -1)
 
             # return render(request, 'healthapp/predict.html', context)
 

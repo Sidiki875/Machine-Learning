@@ -11,76 +11,95 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
 
 class ParticipantForm(forms.Form):
-    age = forms.IntegerField(
+    Age = forms.IntegerField(
         min_value=0,
         max_value=120,
         required = True,
         error_messages = {'required': 'Please provide your age', 'max_value': 'Please provide a realistic age'},
         label='Age'
     )
-    bmi = forms.FloatField(
+    BMI = forms.IntegerField(
         min_value=0,
         max_value=100,
         label='BMI'
     )
-    sex = forms.ChoiceField(
-        choices=[('male','Male'), ('female', 'Female')]
+    Sex = forms.TypedChoiceField(
+        choices = [(0,'Female'), (1, 'Male')],
+        coerce = int,
     )
-    blood_pressure = forms.ChoiceField(
+    HighBP = forms.TypedChoiceField(
         choices = [(0, 'Yes'),(1, 'No')],
+        coerce = int,
         label=' High Blood Pressure'
     )
-    physical_activity = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    PhysActivity = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    gen_hlth = forms.ChoiceField(
-        choices= [(1, 'Excellent'), (2, 'Very Good'), (3, 'Good'), (4, 'Fair'), (5, 'Poor')]
+    GenHlth = forms.TypedChoiceField(
+        choices= [(1, 'Excellent'), (2, 'Very Good'), (3, 'Good'), (4, 'Fair'), (5, 'Poor')],
+        coerce = int,
     )
-    any_hlthcare = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    AnyHealthcare = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    Hvyalcohol = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    HvyAlcoholConsump = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    Veggies = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    Veggies = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    Fruits = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    Fruits = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    Nodocbccost = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    NoDocbcCost = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
     PhysHlth = forms.IntegerField(
         min_value = 0,
         max_value = 30,
         label = 'How many days during the past 30 days was your physical health not good?'
     )
-    Diffwalk = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    DiffWalk = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    smoker = forms.ChoiceField(
-        choices= [(0, 'Yes'),(1, 'No')]
+    Smoker = forms.TypedChoiceField(
+        choices= [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    stroke = forms.ChoiceField(
-        choices = [(0, 'Yes'),(1, 'No')]
+    Stroke = forms.TypedChoiceField(
+        choices = [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    income = forms.ChoiceField(
+    Income = forms.TypedChoiceField(
         choices = [(1,'Less than $10,000'),(2,'Less than $15,000'),(3,'Less than $20,000'),
-                   (4,'Less than $25,000'),(5,'less than $35,000'),(6,'Less than $50,000'),(7,'Less than $75,000'),(8,'$75,000 or more')]
+                   (4,'Less than $25,000'),(5,'less than $35,000'),(6,'Less than $50,000'),
+                   (7,'Less than $75,000'),(8,'$75,000 or more')],
+        coerce = int,
     )
-    CholCheck = forms.ChoiceField(
-        choices = [(0, 'Yes'),(1, 'No')]
+    CholCheck = forms.TypedChoiceField(
+        choices = [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    HighChol = forms.ChoiceField(
-        choices = [(0, 'Yes'),(1, 'No')]
+    HighChol = forms.TypedChoiceField(
+        choices = [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
-    Education = forms.ChoiceField(
+    Education = forms.TypedChoiceField(
         choices = [(1, 'Never attended school or only kindergarten'),(2, 'Grades 1 through 8 Elementary'),(3, 'Grades 9 through 11(Some high school)'),
-                   (4, 'Grade 12 or GED (High School graduate)'),(5, 'College 1 year to 3 years (Some college or technical school)'),(6, 'College 4 years or more (College graduate)')]
+                   (4, 'Grade 12 or GED (High School graduate)'),(5, 'College 1 year to 3 years (Some college or technical school)'),
+                   (6, 'College 4 years or more (College graduate)')],
+        coerce = int,
     )
-    HeartDiseaseorAttack = forms.ChoiceField(
-        choices = [(0, 'Yes'),(1, 'No')]
+    HeartDiseaseorAttack = forms.TypedChoiceField(
+        choices = [(0, 'Yes'),(1, 'No')],
+        coerce = int,
     )
     MentHlth = forms.IntegerField(
         min_value = 0,

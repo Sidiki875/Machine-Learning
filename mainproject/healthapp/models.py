@@ -28,12 +28,12 @@ class Person(models.Model):
 
 class Participant(models.Model):
     Age = models.IntegerField(default=0)
-    BMI = models.FloatField(default=0.0)
+    BMI = models.IntegerField(default=0)
     Income = models.IntegerField(default=0)
     Stroke = models.IntegerField(default=0)
     Smoker = models.IntegerField(default=0)
     CholCheck = models.IntegerField(default=0)
-    Sex = models.CharField(max_length=6, default='Male')
+    Sex = models.IntegerField(default=0)
     HighBP = models.IntegerField(default=0)
     PhysActivity = models.IntegerField(default=0)
     GenHlth = models.IntegerField(default=0)
@@ -41,7 +41,7 @@ class Participant(models.Model):
     HvyAlcoholConsump = models.IntegerField(default=0)
     Veggies = models.IntegerField(default=0)
     Fruits = models.IntegerField(default=0)
-    Nodocbccost = models.IntegerField(default=0)
+    NoDocbcCost = models.IntegerField(default=0)
     PhysHlth = models.IntegerField(default=0)
     DiffWalk = models.IntegerField(default=0)
     HighChol = models.IntegerField(default=0)
