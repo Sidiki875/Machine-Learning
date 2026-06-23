@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title> Survey </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-betal/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/healthapp/css/index.css' %}">
+</head>
+
+<! -- BODY -->
+<body>
+    <!-- Title -->
+    
+    <div class="navbar">
+              <a class="active" href="/healthapp/"><i class="fa fa-fw fa-home"> </i> Home</a>
+              <a href="#"> <i class= "fa fa-fw fa-search"></i> Search </a>
+              <a href="#"> <i class="fa fa-fw fa-user"></i> Login</a>
+              <a href="/healthapp/predict/"> <i class="fa fa-fw fa-stethoscope"> </i> Predict</a>
+              <a href="/healthapp/contact/"> <i class="fa fa-fw fa-envelope"> </i> Contact</a>
+              <a href="/healthapp/predict2/"> <i class="fa fa-fw fa-venus"> </i> Predict for Women</a>
+              <a href="/healthapp/survey/"> <i class="fa fa-fw fa-book"> </i> Further Studies</a>
+    </div>
+
+    <h2 class="w-100 p-4 border-bottom text-center">Participating in future studies</h2>
+
+     <br>
+
+     <form method="POST" align="center">
+      {% csrf_token %}
+      {{ form3 }}
+      <input type="submit" value="Send">
+     </form>
+
+
+     <!-- Footer -->
+      <footer class="w-100 m-0 mt-4 p-4">
+        <div class="row ps-4 pe-4 text-end">
+            <span class="fs-6 text-info"><small>Developed by Sidikiba</small></span>
+        </div>
+      </footer>
+
+</body>

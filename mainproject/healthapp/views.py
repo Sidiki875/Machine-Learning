@@ -4,7 +4,9 @@ import plotly.express as px
 from plotly.offline import plot
 import plotly.graph_objects as go
 from plotly.graph_objs import Figure
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 from .forms import EntityForm
 from .forms import ParticipantForm
@@ -292,3 +294,33 @@ def BMIc(request):
         form_BMI = BMIForm()
     
     return render(request, 'healthapp/BMIc.html', {'form_BMI':form_BMI})
+
+
+@login_required
+def survey2(request):
+
+    if request.method == 'POST':
+
+        form3 = Participant3Form(request.POST)
+        
+        if form3.is_valid():
+            participant3 = Participant3.objects.create(**form3.cleaned_data)
+            return redirect('healthapp:survey2')
+        
+    else:
+        form3 = Participant3Form()
+
+    
+    return render(request, 'healthapp/survey2.html', {'form3':form3})
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form':form})

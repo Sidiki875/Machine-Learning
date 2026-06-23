@@ -14,6 +14,8 @@ urlpatterns = [
     path('healthapp/predict2/', views.predict2, name='predict2'),
     path('healthapp/BMIc/', views.BMIc, name='BMIc'),
     path('healthapp/survey/', views.survey, name='survey'),
+    path('healthapp/survey2/', views.survey2, name='survey2'),
     path('healthapp/contact/', views.contact_view, name='contact'),
+    path('signup/', views.signup, name='signup'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
