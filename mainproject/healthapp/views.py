@@ -220,7 +220,7 @@ def predict2(request):
 
 def survey(request):
 
-    result = None
+    #result = None
 
     if request.method == 'POST':
 
@@ -231,7 +231,7 @@ def survey(request):
             Sex = form3.cleaned_data['Sex']
             Age = form3.cleaned_data['Age']
             Height = form3.cleaned_data['Height']
-            Weight = form3.cleaned_data['weight']
+            Weight = form3.cleaned_data['Weight']
             BMI = form3.cleaned_data['BMI']
             Smoking = form3.cleaned_data['Smoking']
             Alcohol = form3.cleaned_data['Alcohol']
@@ -290,4 +290,11 @@ def survey(request):
             BUN = BUN,
             Hypoglycemia = Hypoglycemia,
         )
+        
+        return render(request, 'healthapp/survey.html', {'form3': form3})
+
+    else:
+        form3 = Participant3Form()
+
+    return render(request, 'healthapp/survey.html', {'form3': form3})
 

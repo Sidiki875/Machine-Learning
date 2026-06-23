@@ -208,8 +208,8 @@ class Participant3Form(forms.Form):
         max_value = 110,
     )
     DMac = forms.TypedChoiceField(
-        choices = [('', 'Select'),(0,'None'),(1, 'Cerebrovascular disease'),(2, 'Coronary heart disease')
-                   (3, 'Coronary disease, peripheral arterial disease'), (4, 'Peripheral arterial disease')
+        choices = [('', 'Select'),(0,'None'),(1, 'Cerebrovascular disease'),(2, 'Coronary heart disease'),
+                   (3, 'Coronary disease, peripheral arterial disease'), (4, 'Peripheral arterial disease'),
                    (5, 'Peripheral arterial disease, cerebrovascular disease'), (6, 'Peripheral arterial disease, coronary heart disease')],
         coerce = int,
     )
