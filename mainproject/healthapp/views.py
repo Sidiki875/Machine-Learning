@@ -179,16 +179,7 @@ def predict2(request):
             DiabetesPedigreeFunction = form2.cleaned_data['DiabetesPedigreeFunction']
             Age = form2.cleaned_data['Age']
 
-            participant2 = Participant2.objects.create(
-                Pregnancies = Pregnancies,
-                Glucose = Glucose,
-                BloodPressure = BloodPressure,
-                SkinThickness = SkinThickness,
-                Insulin = Insulin,
-                BMI = BMI,
-                DiabetesPedigreeFunction = DiabetesPedigreeFunction,
-                Age = Age,
-            )
+            participant2 = Participant2.objects.create(**form2.cleaned_data)
 
             input_data = [Pregnancies, Glucose, BloodPressure, 
                           SkinThickness, Insulin, BMI,
