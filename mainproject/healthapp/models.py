@@ -63,3 +63,40 @@ class Participant2(models.Model):
     BMI = models.FloatField(default=0.0)
     DiabetesPedigreeFunction = models.FloatField(default=0.0)
     Age = models.IntegerField(default=0)
+
+
+class Participant3(models.Model):
+    Sex = models.IntegerField(default=0)
+    Age = models.IntegerField(default=0)
+    Height = models.FloatField(default=0)
+    Weight = models.FloatField(default=0)
+    BMI = models.FloatField(default=0.0)
+    Smoking = models.FloatField(default=0.0)
+    Alcohol = models.IntegerField(default=0)
+    Duration = models.FloatField(default=0.0)
+    DMaC = models.IntegerField(default=0)
+    DMic = models.IntegerField(default=0)
+    Comorbidities = models.IntegerField(default=0)
+    HypoglycemicAgent = models.IntegerField(default=0)
+    FPGlucose = models.FloatField(default=0.0)
+    PPGlucose = models.FloatField(default=0.0)
+    FCpeptide = models.FloatField(default=0.0)
+    Ppeptide = models.FloatField(default=0.0)
+    Fastinsulin = models.FloatField(default=0.0)
+    Postinsulin = models.FloatField(default=0.0)
+    HbA1c = models.IntegerField(default=0)
+    GAlbumin = models.FloatField(default=0.0)
+    TCholesterol = models.FloatField(default=0.0)
+    Triglyceride = models.FloatField(default=0.0)
+    HDLC = models.FloatField(default=0.0)
+    LDLC = models.FloatField(default=0.0)
+    Creatinine = models.FloatField(default=0.0)
+    EGFR = models.IntegerField(default=0.0)
+    UAcid = models.FloatField(default=0.0)
+    BUN = models.FloatField(default=0.0)
+    Hypoglycemia = models.IntegerField(default=0.0)
+    
+
+
+
+

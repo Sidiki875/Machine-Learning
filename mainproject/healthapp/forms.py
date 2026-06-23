@@ -169,3 +169,137 @@ class Participant2Form(forms.Form):
         max_value = 120,
         label = 'Age'
     )
+
+
+class Participant3Form(forms.Form):
+    Sex = forms.TypedChoiceField(
+        choices = [('', 'Select Gender'),(0,'Female'), (1, 'Male')],
+        coerce = int,
+    )
+    Age = forms.IntegerField(
+        min_value=0,
+        max_value=120,
+        required = True,
+        error_messages = {'required': 'Please provide your age', 'max_value': 'Please provide a realistic age'},
+        label='Age'
+    )
+    Height = forms.FloatField(
+        min_value = 0,
+        max_value = 300,
+    )
+    Weight = forms.FloatField(
+        min_value = 0,
+        max_value = 1500,
+    )
+    BMI = forms.FloatField(
+        min_value = 11,
+        max_value = 90,
+    )
+    Smoking = forms.FloatField(
+        min_value = 0,
+        max_value = 110,
+    )
+    Alcohol = forms.TypedChoiceField(
+        choices = [('', 'Select'),(0, 'Drinker'),(1, 'Non-Drinker')],
+        coerce = int,
+    )
+    Duration = forms.FloatField(
+        min_value = 0,
+        max_value = 110,
+    )
+    DMac = forms.TypedChoiceField(
+        choices = [('', 'Select'),(0,'None'),(1, 'Cerebrovascular disease'),(2, 'Coronary heart disease')
+                   (3, 'Coronary disease, peripheral arterial disease'), (4, 'Peripheral arterial disease')
+                   (5, 'Peripheral arterial disease, cerebrovascular disease'), (6, 'Peripheral arterial disease, coronary heart disease')],
+        coerce = int,
+    )
+    DMic = forms.TypedChoiceField(
+        choices = [(0,'none'),(1,'nephropathy'),(2, 'nephropathy, neuropathy'),(3, 'neuropathy'),
+                    (4, 'retinopathy', (5, 'neuropathy, retinopathy'), (6, 'nephropathy, retinopathy'),
+                     (7, 'nephropathy, neuropathy, retinopathy'))],
+        coerce = int,
+    )
+    Comorbidities = forms.TypedChoiceField(
+        choices = [(0,'none'),(1,'atrial fibrilation'),(2, 'cataract'),
+                   (3, 'cholecystitis'),(4, 'fatty liver disease', (5, 'hepatic dysfunction'),
+                     (6, 'hyperlipidemia'), (7, 'hypertension'))],
+        coerce = int,
+    )
+    HypoglycemicAgent = forms.TypedChoiceField(
+        choices = [(0,'none'),(1,'acarbose'),(2, 'canagliflozin'),
+                   (3, 'dapagliflozin'),(4, 'Gansulin 40R', (5, 'Insulin aspart'),
+                     (6, 'Novolin R'), (7, 'voglibose'))],
+        coerce = int,
+    )
+    FPGlucose = forms.FloatField(
+        min_value = 45,
+        max_value = 500,
+    )
+    PPGlucose = forms.FloatField(
+        min_value = 50,
+        max_value = 700,
+    )
+    FCpeptide = forms.FloatField(
+        min_value = 0,
+        max_value = 5,
+    )
+    Ppeptide = forms.FloatField(
+        min_value = 0,
+        max_value = 5,
+    )
+    Fastinsulin = forms.FloatField(
+        min_value = 0,
+        max_value = 2250,
+    )
+    Postinsulin = forms.FloatField(
+        min_value = 0,
+        max_value = 2250,
+    )
+    HbA1c = forms.IntegerField(
+        min_value = 0,
+        max_value = 200,
+    )
+    GAlbumin = forms.FloatField(
+        min_value = 0,
+        max_value = 100,
+    )
+    TCholesterol = forms.FloatField(
+        min_value = 0,
+        max_value = 10,
+    )
+    Triglyceride = forms.FloatField(
+        min_value = 0,
+        max_value = 10,
+    )
+    HDLC = forms.FloatField(
+        min_value = 0,
+        max_value = 10,
+    )
+    LDLC = forms.FloatField(
+        min_value = 0,
+        max_value = 10,
+    )
+    Creatinine = forms.FloatField(
+        min_value = 0,
+        max_value = 200,
+    )
+    EGFR = forms.IntegerField(
+        min_value = 0,
+        max_value = 200,
+    )
+    UAcid = forms.FloatField(
+        min_value = 50,
+        max_value = 700,
+    )
+    BUN = forms.FloatField(
+        min_value = 0,
+        max_value = 25,
+    )
+    Hypoglycemia = forms.TypedChoiceField(
+        choices = [('', 'Select'),(0, 'No'),(1, 'Yes')],
+        coerce = int,
+    )
+
+
+
+
