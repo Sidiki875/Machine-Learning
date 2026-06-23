@@ -16,7 +16,7 @@ from .forms import ContactForm
 from .models import Participant
 from .models import Participant2
 from .models import Participant3
-from .models import BMIc
+from .models import BMIcal
 
 from .mllog import logreg_cv
 from .ml2log import logistreg_cv
@@ -272,7 +272,7 @@ def BMIc(request):
             Height = form_BMI.cleaned_data['Height']
             Weight = form_BMI.cleaned_data['Weight']
 
-            bmic = BMIc.objects.create(**form_BMI.cleaned_data)
+            bmic = BMIcal.objects.create(**form_BMI.cleaned_data)
 
             result = Weight/Height**2
 
