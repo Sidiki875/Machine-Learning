@@ -10,11 +10,13 @@ from .forms import EntityForm
 from .forms import ParticipantForm
 from .forms import Participant2Form
 from .forms import Participant3Form
+from .forms import BMIForm
 from .forms import ContactForm
 
 from .models import Participant
 from .models import Participant2
 from .models import Participant3
+from .models import BMIc
 
 from .mllog import logreg_cv
 from .ml2log import logistreg_cv
@@ -258,3 +260,35 @@ def survey(request):
 
     return render(request, 'healthapp/survey.html', {'form3': form3})
 
+def BMIc(request):
+
+    result = None
+
+    if request.method == 'POST':
+
+        form_BMI = BMIForm(request.POST)
+
+        if form_BMI.is_valid():
+            Height = form_BMI.cleaned_data['Height']
+            Weight = form_BMI.cleaned_data['Weight']
+
+            bmic = BMIc.objects.create(**form_BMI.cleaned_data)
+
+            result = Weight/Height**2
+
+            if result < 18.5: 
+                result_comment = 'Underweight'
+            elif result >= 18.5 and result < 24.9:
+                result_comment = 'Healthy weight'
+            elif result >= 24.9 and result < 30.00:
+                result_comment = 'Overweight'
+            else:
+                result_comment = 'Obese'
+
+
+            return render(request, 'healthapp/BMIc.html', {'form_BMI':form_BMI, 'result':result, 'result_comment':result_comment})
+        
+    else:
+        form_BMI = BMIForm()
+    
+    return render(request, 'healthapp/BMIc.html', {'form_BMI':form_BMI})

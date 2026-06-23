@@ -300,6 +300,16 @@ class Participant3Form(forms.Form):
         coerce = int,
     )
 
-
+class BMIForm(forms.Form):
+    Height = forms.FloatField(
+        min_value = 0,
+        max_value = 3,
+        label = 'Height in meters'
+    )
+    Weight = forms.FloatField(
+        min_value = 0,
+        max_value = 1000,
+        label = 'Weight in kg'
+    )
 
 

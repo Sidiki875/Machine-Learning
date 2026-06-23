@@ -96,7 +96,8 @@ class Participant3(models.Model):
     BUN = models.FloatField(default=0.0)
     Hypoglycemia = models.IntegerField(default=0.0)
     
-
-
+class BMIc(models.Model):
+    Height = models.FloatField(default=0.0)
+    Weight = models.FloatField(default=0.0)
 
 
