@@ -200,7 +200,7 @@ class Participant3Form(forms.Form):
         max_value = 110,
     )
     Alcohol = forms.TypedChoiceField(
-        choices = [('', 'Select'),(0, 'Drinker'),(1, 'Non-Drinker')],
+        choices = [('', 'Select'), (0, 'Drinker'), (1, 'Non-Drinker')],
         coerce = int,
     )
     Duration = forms.FloatField(
@@ -208,27 +208,27 @@ class Participant3Form(forms.Form):
         max_value = 110,
     )
     DMac = forms.TypedChoiceField(
-        choices = [('', 'Select'),(0,'None'),(1, 'Cerebrovascular disease'),(2, 'Coronary heart disease'),
+        choices = [('', 'Select'), (0,'None'), (1, 'Cerebrovascular disease'), (2, 'Coronary heart disease'),
                    (3, 'Coronary disease, peripheral arterial disease'), (4, 'Peripheral arterial disease'),
                    (5, 'Peripheral arterial disease, cerebrovascular disease'), (6, 'Peripheral arterial disease, coronary heart disease')],
         coerce = int,
     )
     DMic = forms.TypedChoiceField(
-        choices = [(0,'none'),(1,'nephropathy'),(2, 'nephropathy, neuropathy'),(3, 'neuropathy'),
-                    (4, 'retinopathy', (5, 'neuropathy, retinopathy'), (6, 'nephropathy, retinopathy'),
-                     (7, 'nephropathy, neuropathy, retinopathy'))],
+        choices = [(0,'none'), (1,'nephropathy'), (2, 'nephropathy, neuropathy'), (3, 'neuropathy'),
+                   (4, 'retinopathy'), (5, 'neuropathy, retinopathy'), (6, 'nephropathy, retinopathy'),
+                   (7, 'nephropathy, neuropathy, retinopathy')],
         coerce = int,
     )
     Comorbidities = forms.TypedChoiceField(
-        choices = [(0,'none'),(1,'atrial fibrilation'),(2, 'cataract'),
-                   (3, 'cholecystitis'),(4, 'fatty liver disease', (5, 'hepatic dysfunction'),
-                     (6, 'hyperlipidemia'), (7, 'hypertension'))],
+        choices = [(0,'none'), (1,'atrial fibrilation'), (2, 'cataract'),
+                   (3, 'cholecystitis'), (4, 'fatty liver disease'), (5, 'hepatic dysfunction'),
+                   (6, 'hyperlipidemia'), (7, 'hypertension')],
         coerce = int,
     )
     HypoglycemicAgent = forms.TypedChoiceField(
-        choices = [(0,'none'),(1,'acarbose'),(2, 'canagliflozin'),
-                   (3, 'dapagliflozin'),(4, 'Gansulin 40R', (5, 'Insulin aspart'),
-                     (6, 'Novolin R'), (7, 'voglibose'))],
+        choices = [(0,'none'), (1,'acarbose'), (2, 'canagliflozin'),
+                   (3, 'dapagliflozin'), (4, 'Gansulin 40R'), (5, 'Insulin aspart'),
+                   (6, 'Novolin R'), (7, 'voglibose')],
         coerce = int,
     )
     FPGlucose = forms.FloatField(

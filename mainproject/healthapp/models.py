@@ -66,7 +66,6 @@ class Participant2(models.Model):
 
 
 class Participant3(models.Model):
-    
     Sex = models.IntegerField(default=0)
     Age = models.IntegerField(default=0)
     Height = models.FloatField(default=0)

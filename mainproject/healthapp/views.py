@@ -258,42 +258,12 @@ def survey(request):
             Hypoglycemia = form3.cleaned_data['Hypoglycemia']
 
         
-            participant3 = Participant3.objects.create(
-                Sex = Sex,
-                Age = Age,
-                Height = Height,
-                Weight = Weight,
-                BMI = BMI,
-                Smoking = Smoking,
-                Alcohol = Alcohol,
-                Duration = Duration,
-                DMac = DMac,
-                DMic = DMic,
-                Comorbidities = Comorbidities,
-                HypoglycemicAgent = HypoglycemicAgent,
-                FPGlucose = FPGlucose,
-                PPGlucose = PPGlucose,
-                FCpeptide = FCpeptide,
-                Ppeptide = Ppeptide,
-                Fastinsulin = Fastinsulin,
-                Postinsulin = Postinsulin,
-                HbA1c = HbA1c,
-                GAlbumin = GAlbumin,
-                TCholesterol = TCholesterol,
-                Triglyceride = Triglyceride,
-                HDLC = HDLC,
-                LDLC = LDLC,
-                Creatinine = Creatinine,
-                EGFR = EGFR,
-                UAcid = UAcid,
-                BUN = BUN,
-                Hypoglycemia = Hypoglycemia,
-            )
+            participant3 = Participant3.objects.create(**form3.cleaned_data)
             
             return render(request, 'healthapp/survey.html', {'form3': form3})
 
-        else:
-            form3 = Participant3Form()
+    else:
+        form3 = Participant3Form()
 
-            return render(request, 'healthapp/survey.html', {'form3': form3})
+    return render(request, 'healthapp/survey.html', {'form3': form3})
 
