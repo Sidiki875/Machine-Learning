@@ -2,7 +2,7 @@
 
 This project consist in the creation of a machine learning tool implememted in a web-based app using Django development framework. Here, users can access for information related to diabetes diagnostic and management from different perspective including socio-economic and purely medical.
 
-To run the program one as to use the command 'pip install -r requirements' to install all the relevant libraries.
+To run the program one as to use the command 'pip install -r requirements' to install all the relevant libraries, afterward please type in the terminal (mainproject folder) 'python manage.py runserver' tolaunch the web app.
 
 The Home page shows the diabetes death rate in a few places around the world, feel free to enter the entity in this format 'France' or 'Asia'.
 
