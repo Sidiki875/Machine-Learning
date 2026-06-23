@@ -18,29 +18,28 @@
     
       <h1> Diabetes Diagnostic Prediction</h1>
 
-      <div class="navbar">
-              <a class="active" href="/healthapp/"><i class="fa fa-fw fa-home"> </i> Home</a>
-              <a href="#"> <i class= "fa fa-fw fa-search"></i> Search </a>
-              <a href=""> <i class="fa fa-fw fa-user"></i> Login</a>
-              <a href="/healthapp/predict/"> <i class="fa fa-fw fa-stethoscope"> </i> Predict</a>
-              <a href="/healthapp/contact/"> <i class="fa fa-fw fa-envelope"> </i> Contact</a>
-              <a href="/healthapp/predict2/"> <i class="fa fa-fw fa-venus"> </i> Predict for Women</a>
-              <a href="/healthapp/survey/"> <i class="fa fa-fw fa-book"> </i> Further Studies</a>
+    <div class="navbar">
+      <a class="active" href="/healthapp/"><i class="fa fa-fw fa-home"> </i> Home</a>
+      <a href="#"> <i class= "fa fa-fw fa-search"></i> Search </a>
+      <a href="/healthapp/predict/"> <i class="fa fa-fw fa-stethoscope"> </i> Predict</a>
+      <a href="/healthapp/contact/"> <i class="fa fa-fw fa-envelope"> </i> Contact</a>
+      <a href="/healthapp/predict2/"> <i class="fa fa-fw fa-venus"> </i> Predict for Women</a>
+      <a href="/healthapp/survey/"> <i class="fa fa-fw fa-book"> </i> Further Studies</a>
 
 
-              {% if user.isauthenticated %}
-                <span> Hi, {{ user.username }} </span>
-                <form action="{ url 'logout' %}" method="post" class="logout-form">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-logout-btn">Log out</button>
-                </form>
-              {% else %}
-                <a href="{% url 'login' %}">Log In</a>
-              {% endif %}
-      </div>
+      {% if user.isauthenticated %}
+        <span> Hi, {{ user.username }} </span>
+        <form action="{ url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="nav-logout-btn">Log out</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
+    </div>
 
-      {% block content %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
 
      <br>
 
@@ -69,3 +68,4 @@
       </footer>
 
 </body>
+</html>

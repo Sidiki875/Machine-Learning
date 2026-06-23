@@ -18,12 +18,11 @@
     
     <div class="navbar">
               <a class="active" href="/healthapp/"><i class="fa fa-fw fa-home"> </i> Home</a>
-              <a href="#"> <i class= "fa fa-fw fa-search"></i> Search </a>
-              <a href="#"> <i class="fa fa-fw fa-user"></i> Login</a>
-              <a href="/healthapp/predict/"> <i class="fa fa-fw fa-stethoscope"> </i> Predict</a>
-              <a href="/healthapp/contact/"> <i class="fa fa-fw fa-envelope"> </i> Contact</a>
-              <a href="/healthapp/predict2/"> <i class="fa fa-fw fa-venus"> </i> Predict for Women</a>
-              <a href="/healthapp/survey/"> <i class="fa fa-fw fa-book"> </i> Further Studies</a>
+        <a href="#"> <i class= "fa fa-fw fa-search"></i> Search </a>
+        <a href="/healthapp/predict/"> <i class="fa fa-fw fa-stethoscope"> </i> Predict</a>
+        <a href="/healthapp/contact/"> <i class="fa fa-fw fa-envelope"> </i> Contact</a>
+        <a href="/healthapp/predict2/"> <i class="fa fa-fw fa-venus"> </i> Predict for Women</a>
+        <a href="/healthapp/survey/"> <i class="fa fa-fw fa-book"> </i> Further Studies</a>
     </div>
 
     <h2 class="w-100 p-4 border-bottom text-center">Participating in future studies</h2>
@@ -32,7 +31,7 @@
 
      <form method="POST" align="center">
       {% csrf_token %}
-      {{ form3 }}
+      {{ form.as_p }}
       <input type="submit" value="Send">
      </form>
 

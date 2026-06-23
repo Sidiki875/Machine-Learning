@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .views import MyLoginView
 
 app_name = 'healthapp'
 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('healthapp/survey2/', views.survey2, name='survey2'),
     path('healthapp/contact/', views.contact_view, name='contact'),
     path('signup/', views.signup, name='signup'),
+    path('login/', MyLoginView.as_view(), name='login'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

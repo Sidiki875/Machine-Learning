@@ -7,6 +7,7 @@ from plotly.graph_objs import Figure
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
 
 from .forms import EntityForm
 from .forms import ParticipantForm
@@ -316,11 +317,14 @@ def survey2(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
+        user_form = UserCreationForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
             return redirect('login')
         
     else:
-        form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form':form})
+        user_form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'user_form':user_form})
+
+class MyLoginView(LoginView):
+    template_name = 'registration/login.html'
