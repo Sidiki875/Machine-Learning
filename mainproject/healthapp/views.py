@@ -9,10 +9,12 @@ from django.shortcuts import render
 from .forms import EntityForm
 from .forms import ParticipantForm
 from .forms import Participant2Form
+from .forms import Participant3Form
 from .forms import ContactForm
 
 from .models import Participant
 from .models import Participant2
+from .models import Participant3
 
 from .mllog import logreg_cv
 from .ml2log import logistreg_cv
@@ -215,3 +217,77 @@ def predict2(request):
         form2 = Participant2Form()
 
     return render(request, 'healthapp/predict2.html', {'form2': form2})
+
+def survey(request):
+
+    result = None
+
+    if request.method == 'POST':
+
+        form3 = Participant3Form(request.POST)
+
+        if form3.is_valid():
+
+            Sex = form3.cleaned_data['Sex']
+            Age = form3.cleaned_data['Age']
+            Height = form3.cleaned_data['Height']
+            Weight = form3.cleaned_data['weight']
+            BMI = form3.cleaned_data['BMI']
+            Smoking = form3.cleaned_data['Smoking']
+            Alcohol = form3.cleaned_data['Alcohol']
+            Duration = form3.cleaned_data['Duration']
+            DMac = form3.cleaned_data['DMac']
+            DMic = form3.cleaned_data['DMic']
+            Comorbidities = form3.cleaned_data['Comorbidities']
+            HypoglycemicAgent = form3.cleaned_data['HypoglycemicAgent']
+            FPGlucose = form3.cleaned_data['FPGlucose']
+            PPGlucose = form3.cleaned_data['PPGlucose']
+            FCpeptide = form3.cleaned_data['FCpeptide']
+            Ppeptide = form3.cleaned_data['Ppeptide']
+            Fastinsulin = form3.cleaned_data['Fastinsulin']
+            Postinsulin = form3.cleaned_data['Postinsulin']
+            HbA1c = form3.cleaned_data['HbA1c']
+            GAlbumin = form3.cleaned_data['GAlbumin']
+            TCholesterol = form3.cleaned_data['TCholesterol']
+            Triglyceride = form3.cleaned_data['Triglyceride']
+            HDLC = form3.cleaned_data['HDLC']
+            LDLC = form3.cleaned_data['LDLC']
+            Creatinine = form3.cleaned_data['Creatinine']
+            EGFR = form3.cleaned_data['EGFR']
+            UAcid = form3.cleaned_data['UAcid']
+            BUN = form3.cleaned_data['BUN']
+            Hypoglycemia = form3.cleaned_data['Hypoglycemia']
+
+        
+        participant3 = Participant3.objects.create(
+            Sex = Sex,
+            Age = Age,
+            Height = Height,
+            Weight = Weight,
+            BMI = BMI,
+            Smoking = Smoking,
+            Alcohol = Alcohol,
+            Duration = Duration,
+            DMac = DMac,
+            DMic = DMic,
+            Comorbidities = Comorbidities,
+            HypoglycemicAgent = HypoglycemicAgent,
+            FPGlucose = FPGlucose,
+            PPGlucose = PPGlucose,
+            FCpeptide = FCpeptide,
+            Ppeptide = Ppeptide,
+            Fastinsulin = Fastinsulin,
+            Postinsulin = Postinsulin,
+            HbA1c = HbA1c,
+            GAlbumin = GAlbumin,
+            TCholesterol = TCholesterol,
+            Triglyceride = Triglyceride,
+            HDLC = HDLC,
+            LDLC = LDLC,
+            Creatinine = Creatinine,
+            EGFR = EGFR,
+            UAcid = UAcid,
+            BUN = BUN,
+            Hypoglycemia = Hypoglycemia,
+        )
+

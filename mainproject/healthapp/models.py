@@ -74,7 +74,7 @@ class Participant3(models.Model):
     Smoking = models.FloatField(default=0.0)
     Alcohol = models.IntegerField(default=0)
     Duration = models.FloatField(default=0.0)
-    DMaC = models.IntegerField(default=0)
+    DMac = models.IntegerField(default=0)
     DMic = models.IntegerField(default=0)
     Comorbidities = models.IntegerField(default=0)
     HypoglycemicAgent = models.IntegerField(default=0)
