@@ -18,3 +18,4 @@ def line_graph(a='United Kingdom'):
 
     return update_graph(str(a))
 
+
